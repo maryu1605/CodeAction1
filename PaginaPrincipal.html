@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Tienda Deportiva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #6a0dad;
+            color: white;
+        }
+        
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .navbar img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .right img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .navbar button {
+            background-color: #ff4b4b;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            margin: 15px;
+            width: 250px;
+            text-align: center;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .details {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .gallery-item .details:hover {
+            background-color: #eaeaea;
+        }
+        /* Ventana emergente para ver más detalles de la prenda */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de navegación superior -->
+    <div class="navbar">
+        <div class="left">
+            <img src="logo.png" alt="Logo de la Tienda">
+            <h1>Tienda Deportiva</h1>
+        </div>
+        <div class="right">
+            <img src="user_photo.jpg" alt="Foto de usuario" id="userConfig">
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <!-- Galería de imágenes -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="prenda1.jpeg" alt="Prenda 1" class="img-preview">
+            <div class="details" data-info="Prenda 1 - Detalles">Detalles de la prenda 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda2.jpg" alt="Prenda 2" class="img-preview">
+            <div class="details" data-info="Prenda 2 - Detalles">Detalles de la prenda 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda3.jpg" alt="Prenda 3" class="img-preview">
+            <div class="details" data-info="Prenda 3 - Detalles">Detalles de la prenda 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda5.jpg" alt="Prenda 5" class="img-preview">
+            <div class="details" data-info="Prenda 5 - Detalles">Detalles de la prenda 5</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda6.jpg" alt="Prenda 6" class="img-preview">
+            <div class="details" data-info="Prenda 6 - Detalles">Detalles de la prenda 6</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda7.jpg" alt="Prenda 7" class="img-preview">
+            <div class="details" data-info="Prenda 7 - Detalles">Detalles de la prenda 7</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda7.jpg" alt="Prenda 7" class="img-preview">
+            <div class="details" data-info="Prenda 7 - Detalles">Detalles de la prenda 7</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+        <div class="gallery-item">
+            <img src="prenda4.jpg" alt="Prenda 4" class="img-preview">
+            <div class="details" data-info="Prenda 4 - Detalles">Detalles de la prenda 4</div>
+        </div>
+    </div>
+
+    <!-- Modal para ver imágenes más grandes -->
+    <div id="modalImg" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImgContent" src="">
+        </div>
+    </div>
+
+    <!-- Modal para ver más detalles de la prenda -->
+    <div id="modalDetails" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="detailsContent"></p>
+        </div>
+    </div>
+
+    <script>
+        // Modal para agrandar la imagen
+        const modalImg = document.getElementById("modalImg");
+        const modalImgContent = document.getElementById("modalImgContent");
+        const imgPreviews = document.querySelectorAll(".img-preview");
+
+        imgPreviews.forEach(img => {
+            img.addEventListener("click", function() {
+                modalImg.style.display = "block";
+                modalImgContent.src = this.src;
+            });
+        });
+
+        // Cerrar modal de imagen
+        const closeModalImg = document.querySelector("#modalImg .close");
+        closeModalImg.onclick = function() {
+            modalImg.style.display = "none";
+        };
+
+        // Modal para ver más detalles de la prenda
+        const modalDetails = document.getElementById("modalDetails");
+        const detailsContent = document.getElementById("detailsContent");
+        const detailsButtons = document.querySelectorAll(".details");
+
+        detailsButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                modalDetails.style.display = "block";
+                detailsContent.textContent = this.dataset.info;
+            });
+        });
+
+        // Cerrar modal de detalles
+        const closeModalDetails = document.querySelector("#modalDetails .close");
+        closeModalDetails.onclick = function() {
+            modalDetails.style.display = "none";
+        };
+
+        // Botón de cerrar sesión
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+            window.location.href = "login.html"; // Redirecciona a la página de inicio de sesión
+        });
+
+        // Redirigir a configuración de usuario
+        document.getElementById("userConfig").addEventListener("click", function() {
+            window.location.href = "configuracionUsuario.html"; // Redirecciona a la configuración de usuario
+        });
+
+        // Cerrar modales al hacer clic fuera de ellos
+        window.onclick = function(event) {
+            if (event.target == modalImg) {
+                modalImg.style.display = "none";
+            }
+            if (event.target == modalDetails) {
+                modalDetails.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>

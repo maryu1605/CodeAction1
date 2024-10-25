@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña - Code Action</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .recovery-container {
+            background-color: #f0f0f0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        
+        .recovery-container h1 {
+            color: #6a0dad;
+            margin-bottom: 20px;
+        }
+        
+        .recovery-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #6a0dad;
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        .recovery-container input[type="submit"] {
+            background-color: #6a0dad;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+        
+        .recovery-container input[type="submit"]:hover {
+            background-color: #4b0082;
+        }
+        
+        .recovery-container p {
+            color: #4b0082;
+            font-size: 14px;
+        }
+        
+        .recovery-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .recovery-container a:hover {
+            text-decoration: underline;
+        }
+        
+        .captcha-container {
+            margin-bottom: 20px;
+        }
+    </style>
+    <!-- reCAPTCHA script (Google) -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+
+    <div class="recovery-container">
+        <!-- Título de la página -->
+        <h1>Recuperación de Contraseña</h1>
+
+        <!-- Formulario de recuperación -->
+        <form action="#" method="post">
+            <input type="text" name="contact" placeholder="Correo electrónico o Número de celular" required>
+
+            <!-- reCAPTCHA de Google -->
+            <div class="captcha-container">
+                <div class="g-recaptcha" data-sitekey="TU_CLAVE_DE_SITIO"></div>
+            </div>
+
+            <input type="submit" value="Enviar Código de Recuperación">
+        </form>
+
+        <!-- Opción de volver al inicio de sesión -->
+        <p>¿Recordaste tu contraseña? <a href="Login.html">Volver a iniciar sesión</a></p>
+    </div>
+
+</body>
+
+</html>

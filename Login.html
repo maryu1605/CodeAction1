@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Code Action</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            background-color: #f0f0f0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        
+        .login-container h1 {
+            color: #6a0dad;
+            margin-bottom: 20px;
+        }
+        
+        .login-container img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #6a0dad;
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .login-container button:hover {
+            background-color: #4b0082;
+        }
+        
+        .login-container p {
+            color: #4b0082;
+            font-size: 14px;
+        }
+        
+        .login-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Contenedor para el logo -->
+        <img src="logo.png" alt="Logo Tienda">
+
+        <!-- Título de la página -->
+        <h1>Code Action</h1>
+
+        <!-- Formulario de inicio de sesión -->
+        <form id="loginForm">
+            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <button type="button" id="login">Iniciar Sesión</button>
+        </form>
+
+        <!-- Enlace de recuperación de contraseña -->
+        <div class="forgot-password">
+            <a href="recuperacion.html">¿Olvidó su contraseña?</a>
+        </div>
+
+        <!-- Apartado de registro -->
+        <p>No tienes cuenta? <a href="registro.html">Crea una</a></p>
+    </div>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBked_ufXQBi4dDP9yjMWOx9HRoxBWlrSk",
+            authDomain: "codeaction-6ae95.firebaseapp.com",
+            databaseURL: "https://codeaction-6ae95-default-rtdb.firebaseio.com",
+            projectId: "codeaction-6ae95",
+            storageBucket: "codeaction-6ae95.appspot.com",
+            messagingSenderId: "755261708123",
+            appId: "1:755261708123:web:2c95409da1da678e6f2c7e",
+        };
+      
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        // Seleccionar el botón de registro y añadir evento
+        const signUp = document.getElementById('signUp');
+        signUp.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevenir que el formulario se envíe
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Validar que los campos no estén vacíos
+            if (email === "" || password === "") {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            // Crear el usuario con Firebase Authentication
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Usuario creado exitosamente
+                    const user = userCredential.user;
+
+                    set(ref(database, 'users/'+user.uid),{
+                        email: email,
+
+                    })
+                    alert('Usuario creado con éxito');
+                    window.location.href = 'pendiente.html';
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    alert(errorMessage); // Mostrar el mensaje de error
+                
+                });
+        });
+
+        login.addEventListener('click', (e)=>{
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+
+    const dt = new Date();
+    update(ref(database, 'users/'+user.uid),{
+        last_login: dt,
+    })
+    alert('User loge in');
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert(errorMessage); // Mostrar el mensaje de error
+  });
+        })
+    </script>
+</body>
+</html>

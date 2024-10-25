@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa - Galería de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Estilo de la barra superior */
+        
+        .navbar {
+            background-color: #add8e6;
+            /* Azul clarito pastel */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        /* Estilo de la galería de productos */
+        
+        .gallery {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        
+        .product-card {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .product-price {
+            color: #6a0dad;
+            margin: 5px 0;
+        }
+        
+        .availability {
+            font-size: 14px;
+            color: green;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1>Mi Tienda</h1>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="Login.html">Ingresar</a>
+            <a href="Registro.html">Crear Cuenta</a>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <!-- Reemplazar las rutas de las imágenes y la información del producto según sea necesario -->
+        <div class="product-card">
+            <img src="ruta_de_imagen_1.jpg" alt="Producto 1" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Camisa Casual</p>
+                <p class="product-price">$25.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Camisa de algodón, cómoda y ligera.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_2.jpg" alt="Producto 2" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Pantalones de Jean</p>
+                <p class="product-price">$40.00</p>
+                <p class="availability">Agotado</p>
+                <p class="product-description">Pantalones de denim de alta calidad.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_3.jpg" alt="Producto 3" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Vestido de Verano</p>
+                <p class="product-price">$30.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Vestido ligero ideal para el verano.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_4.jpg" alt="Producto 4" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Sudadera con Capucha</p>
+                <p class="product-price">$35.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Sudadera cómoda para el clima frío.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_5.jpg" alt="Producto 5" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Zapatos Deportivos</p>
+                <p class="product-price">$50.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Zapatos ligeros para correr.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_6.jpg" alt="Producto 6" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Shorts de Playa</p>
+                <p class="product-price">$20.00</p>
+                <p class="availability">Agotado</p>
+                <p class="product-description">Shorts cómodos para disfrutar del sol.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_7.jpg" alt="Producto 7" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Blusa Elegante</p>
+                <p class="product-price">$45.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Blusa perfecta para ocasiones especiales.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_8.jpg" alt="Producto 8" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Chaqueta de Cuero</p>
+                <p class="product-price">$60.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Chaqueta de cuero auténtico, elegante y resistente.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_9.jpg" alt="Producto 9" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Faldas de Primavera</p>
+                <p class="product-price">$30.00</p>
+                <p class="availability">Agotado</p>
+                <p class="product-description">Faldas frescas para el clima cálido.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_10.jpg" alt="Producto 10" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Camiseta Básica</p>
+                <p class="product-price">$15.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Camiseta clásica, básica y versátil.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_11.jpg" alt="Producto 11" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Leggings Deportivos</p>
+                <p class="product-price">$25.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Leggings cómodos para hacer ejercicio.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_12.jpg" alt="Producto 12" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Botines de Cuero</p>
+                <p class="product-price">$70.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Botines elegantes y duraderos.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_13.jpg" alt="Producto 13" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Gorro de Invierno</p>
+                <p class="product-price">$12.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Gorro cálido para el invierno.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_14.jpg" alt="Producto 14" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Bufanda de Lana</p>
+                <p class="product-price">$18.00</p>
+                <p class="availability">Disponible</p>
+                <p class="product-description">Bufanda suave y acogedora.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="ruta_de_imagen_15.jpg" alt="Producto 15" class="product-image">
+            <div class="product-info">
+                <p class="product-name">Cinturón de Cuero</p>
+                <p class="product-price">$22.00</p>
+                <p class="availability">Agotado</p>
+                <p class="product-description">Cinturón clásico y duradero.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
